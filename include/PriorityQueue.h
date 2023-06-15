@@ -4,43 +4,43 @@
 #include <list>
 #include <exception>
 
+
 struct MyComparator {
+	/// <summary>
+	/// An operator that compares two templates
+	/// </summary>
 	int operator()(int a, int b) const {
 		return a - b;
 	}
 };
 // any templates?
 //template <class T>
+
+/// <summary>
+/// Class for Priority Queue
+/// </summary>
 class PriorityQueue {
 private:
-	std::list<int> _priorityQueue;// = new std::list<int>();
+	std::list<int> _priorityQueue;
    
 public:
-	//PriorityQueue()
-	//{
-	//	//_priorityQueue = new std::list<int>();
-	//}
 
-	~PriorityQueue()
-	{
-		_priorityQueue.clear();
-		//delete _priorityQueue;
-		//_priorityQueue = NULL;
-	}
-
-   // You need to complete the implement : 
+	/// <summary>
+	/// Push elment into priorityQueue
+	/// </summary>
 	void push(const int& t)
 	{
 		bool isAdd = false;
 
-		if (_priorityQueue.empty())
+		
+		if (_priorityQueue.empty()) //case empty
 		{
 			_priorityQueue.push_front(t);
 			isAdd = true;
 		}
 		else
 		{
-			auto it = _priorityQueue.begin();
+			auto it = _priorityQueue.begin(); //case insert to the beginning
 			if (MyComparator()(*it, t) > 0)
 			{
 				_priorityQueue.push_front(t);
@@ -62,20 +62,23 @@ public:
 			}
 
 		}
-		if (!isAdd)
+		if (!isAdd) //case insert to the end
 			_priorityQueue.push_back(t);
 	}
+
+	/// <summary>
+	/// poll elment into priorityQueue
+	/// </summary>
 	int poll()
 	{
 		if (_priorityQueue.empty())
 		{
-			std::exception e("empty Priority Queue");
-			//e.what;
+			std::exception e("Priority Queue is empty!");
 			throw e;
 		}
-		int i = _priorityQueue.front();
+		int res = _priorityQueue.front();
 		_priorityQueue.pop_front();
-		return i;
+		return res;
 	}
 
 };
