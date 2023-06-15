@@ -3,6 +3,7 @@
 #include <iostream>
 #include <list>
 #include <exception>
+#include "Dog.h"
 
 
 struct MyComparator {
@@ -11,7 +12,7 @@ struct MyComparator {
 	/// <summary>
 	/// An operator that compares two templates
 	/// </summary>
-	float operator()(float a, float b) const {
+	Dog operator()(Dog a, Dog b) const {
 		return a - b;
 	}
 };
@@ -23,14 +24,14 @@ struct MyComparator {
 /// </summary>
 class PriorityQueue {
 private:
-	std::list<float> _priorityQueue;
+	std::list<Dog> _priorityQueue;
    
 public:
 
 	/// <summary>
 	/// Push elment into priorityQueue
 	/// </summary>
-	void push(const float& t)
+	void push(const Dog& t)
 	{
 		bool isAdd = false;
 
@@ -46,7 +47,7 @@ public:
 
 			for (it; it != _priorityQueue.end() ; ++it)
 			{
-				if (MyComparator()(*it, t) > 0)
+				if ((MyComparator()(*it, t)) >= 0)
 				{
 					_priorityQueue.insert(it, t);
 					isAdd = true;
@@ -64,14 +65,14 @@ public:
 	/// <summary>
 	/// poll elment into priorityQueue
 	/// </summary>
-	float poll()
+	Dog poll()
 	{
 		if (_priorityQueue.empty())
 		{
 			std::exception e("Priority Queue is empty!");
 			throw e;
 		}
-		float res = _priorityQueue.front();
+		Dog res = _priorityQueue.front();
 		_priorityQueue.pop_front();
 		return res;
 	}
