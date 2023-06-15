@@ -15,8 +15,7 @@ struct MyComparator {
 		return a - b;
 	}
 };
-// any templates?
-//template <class T>
+
 
 /// <summary>
 /// Class for Priority Queue
