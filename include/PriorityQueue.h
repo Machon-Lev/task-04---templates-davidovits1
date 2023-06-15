@@ -3,7 +3,6 @@
 #include <iostream>
 #include <list>
 #include <exception>
-#include "Dog.h"
 
 
 struct MyComparator {
