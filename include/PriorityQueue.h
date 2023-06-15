@@ -6,10 +6,12 @@
 
 
 struct MyComparator {
+
+	MyComparator() {}
 	/// <summary>
 	/// An operator that compares two templates
 	/// </summary>
-	int operator()(int a, int b) const {
+	float operator()(float a, float b) const {
 		return a - b;
 	}
 };
@@ -21,14 +23,14 @@ struct MyComparator {
 /// </summary>
 class PriorityQueue {
 private:
-	std::list<int> _priorityQueue;
+	std::list<float> _priorityQueue;
    
 public:
 
 	/// <summary>
 	/// Push elment into priorityQueue
 	/// </summary>
-	void push(const int& t)
+	void push(const float& t)
 	{
 		bool isAdd = false;
 
@@ -41,25 +43,18 @@ public:
 		else
 		{
 			auto it = _priorityQueue.begin(); //case insert to the beginning
-			if (MyComparator()(*it, t) > 0)
-			{
-				_priorityQueue.push_front(t);
-				isAdd = true;
-			}
-				
-			else
-			{
-				for (++it; it != _priorityQueue.end() ; ++it)
-				{
-					if (MyComparator()(*it, t) > 0)
-					{
-						_priorityQueue.insert(--it, t);
-						isAdd = true;
-						break;
 
-					}
+			for (it; it != _priorityQueue.end() ; ++it)
+			{
+				if (MyComparator()(*it, t) > 0)
+				{
+					_priorityQueue.insert(it, t);
+					isAdd = true;
+					break;
+
 				}
 			}
+		
 
 		}
 		if (!isAdd) //case insert to the end
@@ -69,14 +64,14 @@ public:
 	/// <summary>
 	/// poll elment into priorityQueue
 	/// </summary>
-	int poll()
+	float poll()
 	{
 		if (_priorityQueue.empty())
 		{
 			std::exception e("Priority Queue is empty!");
 			throw e;
 		}
-		int res = _priorityQueue.front();
+		float res = _priorityQueue.front();
 		_priorityQueue.pop_front();
 		return res;
 	}
