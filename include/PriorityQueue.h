@@ -8,11 +8,11 @@
 
 struct MyComparator {
 
-	MyComparator() {}
 	/// <summary>
 	/// An operator that compares two templates
 	/// </summary>
-	Dog operator()(Dog a, Dog b) const {
+	template<typename T>
+	T operator()(T a, T b) const {
 		return a - b;
 	}
 };
@@ -22,16 +22,17 @@ struct MyComparator {
 /// <summary>
 /// Class for Priority Queue
 /// </summary>
+template <class T>
 class PriorityQueue {
 private:
-	std::list<Dog> _priorityQueue;
+	std::list<T> _priorityQueue;
    
 public:
 
 	/// <summary>
 	/// Push elment into priorityQueue
 	/// </summary>
-	void push(const Dog& t)
+	void push(const T& t)
 	{
 		bool isAdd = false;
 
@@ -65,14 +66,14 @@ public:
 	/// <summary>
 	/// poll elment into priorityQueue
 	/// </summary>
-	Dog poll()
+	T poll()
 	{
 		if (_priorityQueue.empty())
 		{
 			std::exception e("Priority Queue is empty!");
 			throw e;
 		}
-		Dog res = _priorityQueue.front();
+		T res = _priorityQueue.front();
 		_priorityQueue.pop_front();
 		return res;
 	}

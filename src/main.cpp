@@ -13,8 +13,7 @@ int main()
 	std::cout << "Hello PriorityQueue.h" << std::endl;
 
 	{
-		//PriorityQueue<Dog> pq;
-		PriorityQueue pq;
+		PriorityQueue<Dog> pq;
 
 		pq.push(Dog(1, 13, "Dog03"));
 		pq.push(Dog(2, 11, "Dog05"));
@@ -37,30 +36,29 @@ int main()
 	}
 
 
-	//cout << endl << endl; 
-	//{
-	//	//PriorityQueue<float> pq;
-	//	PriorityQueue pq;
+	cout << endl << endl; 
+	{
+		PriorityQueue<float> pq;
 
-	//	pq.push(2.3);
-	//	pq.push(1.4);
-	//	pq.push(2.2);
-	//	pq.push(6.1);
-	//	pq.push(2.5);
-	//	try
-	//	{
-	//		cout << "pq.poll() = " << pq.poll() << endl;
-	//		cout << "pq.poll() = " << pq.poll() << endl;
-	//		cout << "pq.poll() = " << pq.poll() << endl;
-	//		cout << "pq.poll() = " << pq.poll() << endl;
-	//		cout << "pq.poll() = " << pq.poll() << endl;
-	//		cout << "pq.poll() = " << pq.poll() << endl;
-	//	}
-	//	catch (exception& e)
-	//	{
-	//		cout << e.what() << endl;
-	//	}
-	//}
+		pq.push(2.3);
+		pq.push(1.4);
+		pq.push(2.2);
+		pq.push(6.1);
+		pq.push(2.5);
+		try
+		{
+			cout << "pq.poll() = " << pq.poll() << endl;
+			cout << "pq.poll() = " << pq.poll() << endl;
+			cout << "pq.poll() = " << pq.poll() << endl;
+			cout << "pq.poll() = " << pq.poll() << endl;
+			cout << "pq.poll() = " << pq.poll() << endl;
+			cout << "pq.poll() = " << pq.poll() << endl;
+		}
+		catch (exception& e)
+		{
+			cout << e.what() << endl;
+		}
+	}
 
 	return 0;
 }
